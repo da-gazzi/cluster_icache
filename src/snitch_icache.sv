@@ -82,10 +82,10 @@ module snitch_icache
   output logic [NR_FETCH_PORTS-1:0]               inst_ready_o,
   output logic [NR_FETCH_PORTS-1:0]               inst_error_o,
 
-  input  sram_cfg_data_t     sram_cfg_data_i,
-  input  sram_cfg_tag_t      sram_cfg_tag_i,
-  output sram_cfg_out_data_t sram_cfg_out_data_o,
-  output sram_cfg_out_tag_t  sram_cfg_out_tag_o,
+  input  sram_cfg_data_t     [CFG.WAY_COUNT-1:0] sram_cfg_data_i,
+  input  sram_cfg_tag_t      [CFG.WAY_COUNT-1:0] sram_cfg_tag_i,
+  output sram_cfg_out_data_t [CFG.WAY_COUNT-1:0] sram_cfg_out_data_o,
+  output sram_cfg_out_tag_t  [CFG.WAY_COUNT-1:0] sram_cfg_out_tag_o,
 
   output axi_req_t axi_req_o,
   input  axi_rsp_t axi_rsp_i
@@ -259,12 +259,12 @@ module snitch_icache
       .flush_valid_i  (flush_valid_i[i]),
       .enable_prefetching_i,
       .enable_branch_pred_i,
-      .icache_events_o ( icache_l0_events_o [i]   ),
-      .in_addr_i       ( inst_addr_i        [i]   ),
-      .in_data_o       ( in_cache_data      [i]   ),
-      .in_error_o      ( in_cache_error     [i]   ),
-      .in_valid_i      ( in_cache_valid     [i]   ),
-      .in_ready_o      ( in_cache_ready     [i]   ),
+      .icache_events_o(icache_l0_events_o[i]),
+      .in_addr_i      (inst_addr_i[i]),
+      .in_data_o      (in_cache_data[i]),
+      .in_error_o     (in_cache_error[i]),
+      .in_valid_i     (in_cache_valid[i]),
+      .in_ready_o     (in_cache_ready[i]),
 
       .out_req_addr_o (local_prefetch_req.addr),
       .out_req_id_o   (local_prefetch_req.id),
