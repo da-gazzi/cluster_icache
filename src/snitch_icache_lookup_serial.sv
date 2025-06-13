@@ -181,8 +181,8 @@ module snitch_icache_lookup_serial
     ) i_tag (
       .clk_i  (clk_i),
       .rst_ni (rst_ni),
-      .impl_i (sram_cfg_tag_i),
-      .impl_o (sram_cfg_out_tag_o),
+      .impl_i (sram_cfg_tag_i[i]),
+      .impl_o (sram_cfg_out_tag_o[i]),
       .req_i  (|tag_enable),
       .we_i   (tag_write),
       .addr_i (tag_addr),

@@ -178,8 +178,8 @@ module snitch_icache_lookup_parallel
       ) i_tag (
         .clk_i  (clk_i),
         .rst_ni (rst_ni),
-        .impl_i (sram_cfg_tag_i),
-        .impl_o (sram_cfg_out_tag_o),
+        .impl_i (sram_cfg_tag_i[i]),
+        .impl_o (sram_cfg_out_tag_o[i]),
         .req_i  (ram_enable[i]),
         .we_i   (ram_write),
         .addr_i (ram_addr),
@@ -218,8 +218,8 @@ module snitch_icache_lookup_parallel
       ) i_data (
         .clk_i  (clk_i),
         .rst_ni (rst_ni),
-        .impl_i (sram_cfg_data_i),
-        .impl_o (sram_cfg_out_data_o),
+        .impl_i (sram_cfg_data_i[i]),
+        .impl_o (sram_cfg_out_data_o[i]),
         .req_i  (ram_enable[i]),
         .we_i   (ram_write),
         .addr_i (ram_addr),
